@@ -4,14 +4,11 @@ import { addSmurf } from '../../actions';
 import SmurfForm from  '../../components/SmurfForm';
 
 const AddSmurf = (props) => {
-  const performAddSmurf = (event) => {
-    event.persist();
+  const performAddSmurf = (event, values) => {
     event.preventDefault();
-    const name = event.target.name.value.trim();
-    const age = parseInt(event.target.age.value, 10);
-    const height = event.target.height.value.trim();
-    if (name !== "" && age && height !=="") {
-      props.addSmurf({name, age, height})
+    values.age = parseInt(values.age, 10);
+    if (values.name !== "" && values.age && values.height !=="") {
+      props.addSmurf(values)
         .then(() => props.history.push("/"));
     }
   };

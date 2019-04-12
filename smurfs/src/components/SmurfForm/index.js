@@ -4,7 +4,7 @@ const SmurfForm = ({onSubmit, initialValues, buttonText, ...props}) => {
   const [values, setValues] = useState(initialValues || {name: "", age: "", height: ""});
   const onChange = e => setValues({...values, [e.target.name]: e.target.value});
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={event => onSubmit(event, values)}>
       <input type="text"
              name="name"
              placeholder="name"
