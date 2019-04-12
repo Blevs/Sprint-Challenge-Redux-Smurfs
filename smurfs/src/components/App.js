@@ -15,10 +15,12 @@ class App extends Component {
   addSmurf = (event) => {
     event.persist();
     event.preventDefault();
-    const name = event.target.name.value;
+    const name = event.target.name.value.trim();
     const age = parseInt(event.target.age.value, 10);
-    const height = event.target.height.value;
-    this.props.addSmurf({name, age, height});
+    const height = event.target.height.value.trim();
+    if (name !== "" && age && height !=="") {
+      this.props.addSmurf({name, age, height});
+    }
   };
   render() {
     return (
