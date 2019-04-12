@@ -9,7 +9,7 @@ import './App.css';
  `How do I ensure that my component links the state to props?`
  */
 const App = ({smurfs, ...props}) => {
-  useEffect(() => props.getSmurfs(), []);
+  useEffect(() => {props.getSmurfs();}, []);
   const performAddSmurf = (event) => {
     event.persist();
     event.preventDefault();
