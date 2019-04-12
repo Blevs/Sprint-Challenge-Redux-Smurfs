@@ -1,4 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Route, NavLink } from 'react-router-dom';
+import Smurfs from '../views/Smurfs';
+import AddSmurf from '../views/AddSmurf';
+import EditSmurf from '../views/EditSmurf';
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -6,17 +10,18 @@ import './App.css';
  Just remember, `how do I `connect` my components to redux?`
  `How do I ensure that my component links the state to props?`
  */
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
-      </div>
-    );
-  }
-}
+const App = (props) => {
+  return (
+    <div className="App">
+      <nav>
+        <NavLink exact to="/">Village</NavLink>
+        <NavLink to="/add">Add Smurf</NavLink>
+      </nav>
+      <Route exact path="/" component={Smurfs} />
+      <Route path="/add" component={AddSmurf} />
+      <Route path="/edit/:id" component={EditSmurf} />
+    </div>
+  );
+};
 
 export default App;

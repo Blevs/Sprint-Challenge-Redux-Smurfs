@@ -22,9 +22,26 @@ In this challenge, you are to build the Smurfs village once again, only this tim
 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
-- [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
-- [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
-- [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+- [x] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+Redux is composed of three main parts: actions, reducers and the store. 
+
+The store is an immutable object that literally stores all of the applications shared state.
+
+Actions are functions that dispatched events to a queue. These events contain a type and, optionally, additional data.
+
+Reducers can be though of as a literal JS reducer of the queue with the accumulator being the state. They processes the actions and perform different actions based on the type, ultimately returning the store. This supplants the old store.
+
+- [x] What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+Applications state can be thought of as the global, shared state between components. Component state is state that is local to a component or it's component tree.
+
+A good test for where state belongs is where it is used. If it is expected to be used between multiple components then it should generally live in application state. On the otherhand, if the state is local and does not effect the components reusability, it should stay in the component.
+
+That is not to say component state must never leave it. A good example is state for managed inputs. The state may live in the component, but we are free to pass it upwards using callbacks.
+
+- [x] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+redux-thunk allows our action creators to return functions in addition to the expected action object. This function is treated as a thunk to be executed asyncronously. This allows us to use the thunk to dispatch additional actions on long running or asyncronous processes. This provides an easy method for handling API interaction.
 
 ## Project Set Up
 
