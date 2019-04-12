@@ -26,7 +26,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        {this.props.smurfs.map(smurf => <div key={smurf.id}>{smurf.name}</div>)}
+        {this.props.smurfs.map(smurf => <div key={smurf.id}>{smurf.name}, {smurf.age}, {smurf.height}</div>)}
         <form onSubmit={this.addSmurf}>
           <input type="text" name="name" placeholder="name" />
           <input type="number" name="age" placeholder="age" />
