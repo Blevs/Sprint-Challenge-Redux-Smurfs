@@ -5,6 +5,7 @@ import {
   GET_SMURFS_START, GET_SMURFS_SUCCESS, GET_SMURFS_FAILURE,
   ADD_SMURF_START, ADD_SMURF_SUCCESS, ADD_SMURF_FAILURE,
   DELETE_SMURF_START, DELETE_SMURF_SUCCESS, DELETE_SMURF_FAILURE,
+  EDIT_SMURF_START, EDIT_SMURF_SUCCESS, EDIT_SMURF_FAILURE,
 } from '../actions';
 
 /*
@@ -92,6 +93,25 @@ const rootReducer = (state = initialState, action) => {
     return {
       ...state,
       deletingSmurf: false,
+      error: action.error
+    };
+  case EDIT_SMURF_START:
+    return {
+      ...state,
+      editingSmurf: true,
+      error: null
+    };
+  case EDIT_SMURF_SUCCESS:
+    return {
+      ...state,
+      editingSmurf: false,
+      smurfs: action.smurfs,
+      error: null
+    };
+  case EDIT_SMURF_FAILURE:
+    return {
+      ...state,
+      editingSmurf: false,
       error: action.error
     };
   default:

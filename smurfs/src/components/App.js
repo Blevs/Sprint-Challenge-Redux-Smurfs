@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, NavLink } from 'react-router-dom';
 import Smurfs from '../views/Smurfs';
 import AddSmurf from '../views/AddSmurf';
+import EditSmurf from '../views/EditSmurf';
 import './App.css';
 /*
  to wire this component up you're going to need a few things.
@@ -18,6 +19,7 @@ const App = (props) => {
       </nav>
       <Route exact path="/" component={Smurfs} />
       <Route path="/add" component={AddSmurf} />
+      <Route path="/edit/:id" component={EditSmurf} />
     </div>
   );
 };

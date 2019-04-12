@@ -53,3 +53,15 @@ export const deleteSmurf = (id) => dispatch => {
     .then(res => dispatch({ type: DELETE_SMURF_SUCCESS, smurfs: res.data }))
     .catch(error => dispatch({ type: DELETE_SMURF_FAILURE, error: error }));
 };
+
+export const EDIT_SMURF_START = "EDIT_SMURF_START";
+export const EDIT_SMURF_SUCCESS = "EDIT_SMURF_SUCCESS";
+export const EDIT_SMURF_FAILURE = "EDIT_SMURF_FAILURE";
+
+export const editSmurf = (smurf) => dispatch => {
+  dispatch({ type: EDIT_SMURF_START });
+  return axios
+    .put(apiUrl + "/smurfs/" + smurf.id, smurf)
+    .then(res => dispatch({ type: EDIT_SMURF_SUCCESS, smurfs: res.data }))
+    .catch(error => dispatch({ type: EDIT_SMURF_FAILURE, error: error }));
+};
