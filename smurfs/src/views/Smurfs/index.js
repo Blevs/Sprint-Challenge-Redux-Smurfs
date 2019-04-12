@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getSmurfs } from '../../actions';
+import { getSmurfs, deleteSmurf } from '../../actions';
 
 const Smurfs = ({smurfs, ...props}) => {
   useEffect(() => {props.getSmurfs();}, []);
@@ -8,7 +8,8 @@ const Smurfs = ({smurfs, ...props}) => {
     <div>
       <h1>SMURFS! 2.0 W/ Redux</h1>
       {smurfs.map(smurf => (
-        <div key={smurf.id}>{smurf.name}, {smurf.age}, {smurf.height}</div>
+        <div key={smurf.id}>{smurf.name}, {smurf.age}, {smurf.height}
+          <span onClick={() => props.deleteSmurf(smurf.id)}>&times;</span></div>
       ))}
     </div>
   );
@@ -16,4 +17,4 @@ const Smurfs = ({smurfs, ...props}) => {
 
 const mapStateToProps = ({smurfs}) => ({smurfs});
 
-export default connect(mapStateToProps, { getSmurfs })(Smurfs);
+export default connect(mapStateToProps, { getSmurfs, deleteSmurf })(Smurfs);
